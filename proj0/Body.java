@@ -1,10 +1,35 @@
 public class Body{
-	public double xxPos;
-	public double yyPos;
-	public double xxVel;
-	public double yyVel;
-	public double mass;
-	public String imgFileName;
+	public class Body {
+
+    /** 
+     * Its current x position  
+     */
+    public double xxPos;
+
+    /** 
+     * Its current y position
+     */
+    public double yyPos;
+
+    /** 
+     * Its current velocity in the x direction 
+     */
+    public double xxVel;
+
+    /** 
+     * Its current velocity in the y direction 
+     */
+    public double yyVel;
+
+    /** 
+     * Its mass  
+     */
+    public double mass;
+
+    /** 
+     * The name of the file that corresponds to the image that depicts the body (for example, jupiter.gif) 
+     */
+    public String imgFileName;
 
 	/** Body constructor
 	*/
