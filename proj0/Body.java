@@ -49,12 +49,12 @@ public class Body{
 	/**Calculate the force in x direction and y direction
     */
 	public double calcForceExertedByX(Body b){
-		Fx = this.calcForceExertedBy(b)*(b.xxPos-this.xxPos)/this.calcDistance(b);
+		double Fx = this.calcForceExertedBy(b)*(b.xxPos-this.xxPos)/this.calcDistance(b);
 		return Fx;
 	}
 
 	public double calcForceExertedByY(Body b){
-		Fy = this.calcForceExertedBy(b)*(b.yyPos-this.yyPos)/this.calcDistance(b);
+		double Fy = this.calcForceExertedBy(b)*(b.yyPos-this.yyPos)/this.calcDistance(b);
 		return Fy;
 	}
 
