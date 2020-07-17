@@ -16,10 +16,9 @@ public class NBody{
      */
 	public static Body[] readBodies(String filename){
 		In in = new In(filename);
-		Body[] planets = new Body[5];
-
 		int num = in.readInt();
 		double Radius = in.readDouble();
+		Body[] planets = new Body[num];
 		
 		for(int i =0; i< num; i++){
 			double xxPos = in.readDouble();
