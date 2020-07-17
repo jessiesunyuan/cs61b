@@ -41,7 +41,7 @@ public class Body{
     */
     public double calcForceExertedBy(Body b){
     	double G = 6.67e-11;
-    	double F = (G * this.mass * b.mass)/(this.calcDistance(b)*this.calcDistance(b));
+    	double F = (G * this.mass * b.mass)/Math.pow(this.calcDistance(b), 2);
     	return F;
 	}
 
