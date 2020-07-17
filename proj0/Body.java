@@ -31,8 +31,6 @@ public class Body{
      */
     public String imgFileName;
 
-	/** Body constructor
-	*/
 	public Body(double xP, double yP, double xV, double yV, double m, String img) {
         xxPos = xP;
         yyPos = yP;
@@ -42,17 +40,15 @@ public class Body{
         imgFileName = img;
     }
 
-    /** copy a Body object
-    */
-    public Body(Body b){
-    	xxPos = b.xxPos;
-    	yyPos = b.yyPos;
-    	xxVel = b.xxPos;
-    	yyVel = b.yyVel;
-    	mass = b.mass;
-    	imgFileName = b.imgFileName;
-
+    public Body(Body b) {
+        xxPos = b.xxPos;
+        yyPos = b.yyPos;
+        xxVel = b.xxVel;
+        yyVel = b.yyVel;
+        mass = b.mass;
+        imgFileName = b.imgFileName;
     }
+
 
     /** Calculate the distance between two Bodys
     */
