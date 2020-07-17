@@ -21,59 +21,69 @@ public class Body{
     /** copy a Body object
     */
     public Body(Body b){
-    	this.xxPos = b.xxPos;
-    	this.yyPos = b.yyPos;
-    	this.xxVel = b.xxPos;
-    	this.yyVel = b.yyVel;
-    	this.mass = b.mass;
-    	this.imgFileName = b.imgFileName;
+    	xxPos = b.xxPos;
+    	yyPos = b.yyPos;
+    	xxVel = b.xxPos;
+    	yyVel = b.yyVel;
+    	mass = b.mass;
+    	imgFileName = b.imgFileName;
 
     }
 
-    /** 
+    /** Calculate the distance between two Bodys
     */
     public double calcDistance(Body b){
-    	double DisX;
-    	double DisY;
-    	DisX = this.xxPos-b.xxPos;
-    	DisY = this.yyPos-b.yyPos;
-    	return Math.sqrt(DisX*DisX + DisY*DisY);
+    	double dx = this.xxPos-b.xxPos;
+    	double dy = this.yyPos-b.yyPos;
+    	return Math.sqrt(dx*dx + dy*dy);
     }
 
+    /**Calculate the force exerted on this body by the given body
+    */
     public double calcForceExertedBy(Body b){
-    	double F = (6.67*(Math.pow(10,-11))*this.mass*b.mass)/(this.calcDistance(b)*this.calcDistance(b));
+    	double G = 6.67e-11;
+    	double F = (G * this.mass * b.mass)/(this.calcDistance(b)*this.calcDistance(b));
     	return F;
 	}
 
+	/**Calculate the force in x direction and y direction
+    */
 	public double calcForceExertedByX(Body b){
-		return this.calcForceExertedBy(b)*(b.xxPos-this.xxPos)/calcDistance(b);
+		Fx = this.calcForceExertedBy(b)*(b.xxPos-this.xxPos)/this.calcDistance(b);
+		return Fx;
 	}
 
 	public double calcForceExertedByY(Body b){
-		return this.calcForceExertedBy(b)*(b.yyPos-this.yyPos)/calcDistance(b);
+		Fy = this.calcForceExertedBy(b)*(b.yyPos-this.yyPos)/this.calcDistance(b);
+		return Fy;
 	}
+
+	/**Calculate the net force in x direction and y direction
+    */
 
 	public double calcNetForceExertedByX(Body[] allBodys){
 		double ForceByX = 0;
-		for(int i=0;i<allBodys.length;i++){
-			if(this.equals(allBodys[i])){
-				continue;
+		for(Body b : allBodys){
+			if(!this.equals(b)){
+				ForceByX += this.calcForceExertedByX(b);
 			}
-			ForceByX += this.calcForceExertedByX(allBodys[i]);
 		}
 		return ForceByX;
 	}
+
 	public double calcNetForceExertedByY(Body[] allBodys){
 		double ForceByY = 0;
-		for(int i=0;i<allBodys.length;i++){
-			if(this.equals(allBodys[i])){
-				continue;
+		for(Body b : allBodys){
+			if(!this.equals(b)){
+				ForceByY += this.calcForceExertedByY(b);
 			}
-			ForceByY += this.calcForceExertedByY(allBodys[i]);
 		}
 		return ForceByY;
 	
 	}
+
+	/** Update the velocity and position of the Body under the effect of force
+	*/
 
 	public void update(double dt, double fX, double fY){
 		this.xxVel = this.xxVel + dt*(fX/this.mass);
@@ -81,6 +91,9 @@ public class Body{
 		this.xxPos = this.xxPos + dt*(this.xxVel);
 		this.yyPos = this.yyPos + dt*(this.yyVel);
 	}
+
+	/** Draw the picture of the body according to its position
+	*/
 
 	public void draw(){
 		StdDraw.picture(this.xxPos, this.yyPos, "images/"+this.imgFileName);
