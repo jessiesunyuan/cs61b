@@ -8,13 +8,13 @@ public class Body{
 
 	/** Body constructor
 	*/
-	public Body(double xP, double yP, double xV,double yV, double m, String img){
-		xxPos = xP;
-		yyPos = yP;
-		xxVel = xV;
-		yyVel = yV;
-		mass = m;
-		imgFileName = img;
+	public Body(double xP, double yP, double xV, double yV, double m, String img) {
+        xxPos = xP;
+        yyPos = yP;
+        xxVel = xV;
+        yyVel = yV;
+        mass = m;
+        imgFileName = img;
     }
 
     /** copy a Body object
