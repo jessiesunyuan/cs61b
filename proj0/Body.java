@@ -50,33 +50,37 @@ public class Body{
     }
 
 
-    /** Calculate the distance between two Bodys
-    */
-    public double calcDistance(Body b){
-    	double dx = this.xxPos-b.xxPos;
-    	double dy = this.yyPos-b.yyPos;
-    	return Math.sqrt(dx*dx + dy*dy);
+    /** 
+     * Calculate the distance between two Bodys 
+     */
+    public double calcDistance(Body b) {
+        double dx = this.xxPos - b.xxPos;
+        double dy = this.yyPos - b.yyPos;
+        double r = Math.hypot(dx, dy);
+        return r;
     }
 
-    /**Calculate the force exerted on this body by the given body
-    */
-    public double calcForceExertedBy(Body b){
-    	double G = 6.67e-11;
-    	double F = (G * this.mass * b.mass)/Math.pow(this.calcDistance(b), 2);
-    	return F;
-	}
+    /** 
+     * Calculate the force exerted on this body by the given body 
+     */
+    public double calcForceExertedBy(Body b) {
+        double G = 6.67e-11;
+        double F = (G * this.mass * b.mass) / Math.pow(this.calcDistance(b), 2);
+        return F; 
+    }
 
-	/**Calculate the force in x direction and y direction
-    */
-	public double calcForceExertedByX(Body b){
-		double Fx = this.calcForceExertedBy(b)*(b.xxPos-this.xxPos)/this.calcDistance(b);
-		return Fx;
-	}
+    /** 
+     * Calculate the force in x direction and y direction 
+     */
+    public double calcForceExertedByX(Body b) {
+        double Fx = this.calcForceExertedBy(b) * (b.xxPos - this.xxPos) / this.calcDistance(b);
+        return Fx;
+    }
 
-	public double calcForceExertedByY(Body b){
-		double Fy = this.calcForceExertedBy(b)*(b.yyPos-this.yyPos)/this.calcDistance(b);
-		return Fy;
-	}
+    public double calcForceExertedByY(Body b) {
+        double Fy = this.calcForceExertedBy(b) * (b.yyPos - this.yyPos) / this.calcDistance(b);
+        return Fy;
+    }    
 
 	/**Calculate the net force in x direction and y direction
     */
