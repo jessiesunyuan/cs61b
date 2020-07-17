@@ -82,40 +82,41 @@ public class Body{
         return Fy;
     }    
 
-	/**Calculate the net force in x direction and y direction
-    */
+	/** 
+     * Calcualte the net force in x direction and y direction 
+     */
+    public double calcNetForceExertedByX(Body[] bs) {
+        double FxNet = 0;
+        for (Body b : bs) {
+            if (!this.equals(b)) {
+                FxNet += this.calcForceExertedByX(b);
+            }
+        }
+        return FxNet;
+    }
 
-	public double calcNetForceExertedByX(Body[] allBodys){
-		double ForceByX = 0;
-		for(Body b : allBodys){
-			if(!this.equals(b)){
-				ForceByX += this.calcForceExertedByX(b);
-			}
-		}
-		return ForceByX;
-	}
+    public double calcNetForceExertedByY(Body[] bs) {
+        double FyNet = 0;
+        for (Body b : bs) {
+            if (!this.equals(b)) {
+                FyNet += this.calcForceExertedByY(b);
+            }
+        }
+        return FyNet;
+    }
 
-	public double calcNetForceExertedByY(Body[] allBodys){
-		double ForceByY = 0;
-		for(Body b : allBodys){
-			if(!this.equals(b)){
-				ForceByY += this.calcForceExertedByY(b);
-			}
-		}
-		return ForceByY;
-	
-	}
-
-	/** Update the velocity and position of the Body under the effect of force
-	*/
-
-	public void update(double dt, double fX, double fY){
-		this.xxVel = this.xxVel + dt*(fX/this.mass);
-		this.yyVel = this.yyVel + dt*(fY/this.mass);
-		this.xxPos = this.xxPos + dt*(this.xxVel);
-		this.yyPos = this.yyPos + dt*(this.yyVel);
-	}
-
+    /** 
+     * Update the velocity and position of the Body under the effect of force 
+     */
+    public void update(double dt, double fX, double fY) {
+        double ax = fX / this.mass;
+        double ay = fY / this.mass;
+        this.xxVel += ax * dt;
+        this.yyVel += ay * dt;
+        this.xxPos += this.xxVel * dt;
+        this.yyPos += this.yyVel * dt;
+    }
+    
 	/** Draw the picture of the body according to its position
 	*/
 
