@@ -1,5 +1,7 @@
-public class Body{
-	public class Body {
+/**
+ * Body
+ */
+public class Body {
 
     /** 
      * Its current x position  
@@ -31,7 +33,7 @@ public class Body{
      */
     public String imgFileName;
 
-	public Body(double xP, double yP, double xV, double yV, double m, String img) {
+    public Body(double xP, double yP, double xV, double yV, double m, String img) {
         xxPos = xP;
         yyPos = yP;
         xxVel = xV;
@@ -48,7 +50,6 @@ public class Body{
         mass = b.mass;
         imgFileName = b.imgFileName;
     }
-
 
     /** 
      * Calculate the distance between two Bodys 
@@ -82,7 +83,7 @@ public class Body{
         return Fy;
     }    
 
-	/** 
+    /** 
      * Calcualte the net force in x direction and y direction 
      */
     public double calcNetForceExertedByX(Body[] bs) {
@@ -117,10 +118,10 @@ public class Body{
         this.yyPos += this.yyVel * dt;
     }
     
-	/** Draw the picture of the body according to its position
-	*/
-
-	public void draw(){
-		StdDraw.picture(this.xxPos, this.yyPos, "images/"+this.imgFileName);
-	}
+    /** 
+     * Draw the picture of the Body according to its position
+     */
+    public void draw() {
+        StdDraw.picture(this.xxPos, this.yyPos, "images/" + this.imgFileName);
+    }
 }
