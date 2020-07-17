@@ -8,8 +8,7 @@ public class Body{
 
 	/** Body constructor
 	*/
-	public Body(double xP, double yP, double xV,
-              double yV, double m, String img){
+	public Body(double xP, double yP, double xV,double yV, double m, String img){
 		xxPos = xP;
 		yyPos = yP;
 		xxVel = xV;

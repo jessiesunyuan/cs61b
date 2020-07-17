@@ -43,8 +43,8 @@ public class NBody{
 		double T = Double.parseDouble(args[0]);
 		double dt = Double.parseDouble(args[1]);
 		String filename = args[2];
-		double radius = readRadius(filename);
-		Body[] Bodys = readBodies(filename);
+		double radius = NBody.readRadius(filename);
+		Body[] Bodys = NBody.readBodies(filename);
 				
 		/** 
 		Draw the background
