@@ -3,34 +3,17 @@
  */
 public class Body {
 
-    /** 
-     * Its current x position  
-     */
+
     public double xxPos;
 
-    /** 
-     * Its current y position
-     */
     public double yyPos;
 
-    /** 
-     * Its current velocity in the x direction 
-     */
     public double xxVel;
 
-    /** 
-     * Its current velocity in the y direction 
-     */
     public double yyVel;
 
-    /** 
-     * Its mass  
-     */
     public double mass;
 
-    /** 
-     * The name of the file that corresponds to the image that depicts the body (for example, jupiter.gif) 
-     */
     public String imgFileName;
 
     public Body(double xP, double yP, double xV, double yV, double m, String img) {
